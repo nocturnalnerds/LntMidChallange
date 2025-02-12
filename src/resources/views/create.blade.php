@@ -15,23 +15,54 @@
                 <h4 class="mb-0">Create Employee</h4>
             </div>
             <div class="card-body">
+                @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    <div>
+                        <strong>Validation Error:</strong>
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+
                 <form action="{{ route('create') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+                        <input type="text" id="name" name="name"
+                            class="form-control @error('name') is-invalid @enderror" required>
+                        @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="age" class="form-label">Age:</label>
-                        <input type="number" id="age" name="age" class="form-control" required>
+                        <input type="number" id="age" name="age" class="form-control @error('age') is-invalid @enderror"
+                            required>
+                        @error('age')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone:</label>
-                        <input type="text" id="phone" name="phone" class="form-control" required>
+                        <input type="text" id="phone" name="phone"
+                            class="form-control @error('phone') is-invalid @enderror" required>
+                        @error('phone')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Address:</label>
-                        <input type="text" id="address" name="address" class="form-control" required>
+                        <input type="text" id="address" name="address"
+                            class="form-control @error('address') is-invalid @enderror" required>
+                        @error('address')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Create Employee</button>
