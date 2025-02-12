@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    public function index(){
-        return view('employee.index');
-    }
 
     public function getEmployees(){
         $employees = Employee::all();
@@ -17,13 +14,14 @@ class EmployeeController extends Controller
     }
     public function createEmployee(Request $req){
         $validate = $req->validate([
-            'name' => 'required|string|max:20|min:5',
-            'age' => 'required|int|min:20',
-            'phone' => 'required|numeric',
-            'address' => 'required|string|max:40|min:10'
+            'name' => 'required|string',
+            'age' => 'required|int',
+            'phone' => 'required|string',
+            'address' => 'required|string'
         ]);
+        
         Employee::create($validate);
-        return ;
+        return redirect()->route('index');
     }
     public function deleteEmployee($id){
         $employee = Employee::findOrFail($id);

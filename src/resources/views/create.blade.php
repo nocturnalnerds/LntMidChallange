@@ -4,53 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Update Employee</title>
+    <title>Employee Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
     <div class="container mt-5">
         <div class="card shadow-sm">
-            <div class="card-header bg-warning text-white">
-                <h4 class="mb-0">Update Employee</h4>
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Create Employee</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('update', $employee->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('create') }}" method="POST">
                     @csrf
-                    @method('PUT')
-
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ $employee->name }}"
-                            required>
+                        <input type="text" id="name" name="name" class="form-control" required>
                     </div>
-
                     <div class="mb-3">
                         <label for="age" class="form-label">Age:</label>
-                        <input type="number" class="form-control" id="age" name="age" value="{{ $employee->age }}"
-                            required>
+                        <input type="number" id="age" name="age" class="form-control" required>
                     </div>
-
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone:</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{ $employee->phone }}"
-                            required>
+                        <input type="text" id="phone" name="phone" class="form-control" required>
                     </div>
-
                     <div class="mb-3">
                         <label for="address" class="form-label">Address:</label>
-                        <textarea class="form-control" id="address" name="address" rows="3"
-                            required>{{ $employee->address }}</textarea>
+                        <input type="text" id="address" name="address" class="form-control" required>
                     </div>
-
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-warning">Update Employee</button>
+                        <button type="submit" class="btn btn-primary">Create Employee</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

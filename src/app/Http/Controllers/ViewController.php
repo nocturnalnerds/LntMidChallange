@@ -11,6 +11,9 @@ class ViewController extends Controller
         $employees = Employee::all();
         return view('index', compact('employees'));
     }
+    public function viewCreate(){
+        return view('create');
+    }
     public function viewEdit($id){
         $employee = Employee::findOrFail($id);
         return view('edit',compact('employee'));
